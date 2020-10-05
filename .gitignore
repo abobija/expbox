@@ -1,0 +1,12 @@
+/firmware/**/*.ini
+/firmware/**/*.cp
+/firmware/**/*.mcl
+/firmware/**/*.bmk
+/firmware/**/*.brk
+/firmware/**/*.dbg
+/firmware/**/*.dct
+/firmware/**/*.dlt
+/firmware/**/*.hex
+/firmware/**/*.log
+/firmware/**/*.txt
+/firmware/**/*.dic
