@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=src\main.h
+Value=src\display.c
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -24,17 +24,20 @@ Count=2
 1=System Libraries
 Count=2
 [FILES]
-Count=1
+Count=2
 File0=src\main.c
+File1=src\display.c
 [BINARIES]
 Count=0
 [IMAGES]
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-Count=2
+Count=4
 File0=src\main.c
-File1=src\main.h
+File1=src\display.h
+File2=src\display.c
+File3=src\defs.h
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -51,8 +54,10 @@ Path3=C:\Users\Alija Bobija\source\repos\expbox\firmware\src\
 Count=1
 Path0=C:\Users\Alija Bobija\source\repos\expbox\firmware\src\
 [HEADERS]
-Count=1
+Count=3
 File0=src\main.h
+File1=src\display.h
+File2=src\defs.h
 [PLDS]
 Count=0
 [Useses]

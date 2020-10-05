@@ -1,21 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define ONE_SEC_TICKS (__FOSC__ * 1e3 / 4)
+#include "defs.h"
 
-typedef unsigned char uint8_t;
-typedef unsigned long uint16_t;
-
-#ifndef bool
-#define bool uint8_t
-#endif
-
-#ifndef true
-#define true 1
-#endif
-
-#ifndef false
-#define false 0
-#endif
+#define TICKS_INCREMENTER 8
+#define ONE_SEC_TICKS 62500 // ((__FOSC__ * 1e3) / 4) / (256 / TICKS_INCREMENT)
 
 #endif
