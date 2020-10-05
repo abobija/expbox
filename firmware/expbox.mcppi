@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=src\display.c
+Value=src\main.c
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -33,10 +33,9 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-Count=3
+Count=2
 File0=src\main.c
-File1=src\display.h
-File2=src\display.c
+File1=src\display.c
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -50,13 +49,14 @@ Path1=C:\Program Files (x86)\mikroe\mikroC PRO for PIC\Uses\P16\
 Path2=C:\Users\Alija Bobija\source\repos\expbox\firmware\
 Path3=C:\Users\Alija Bobija\source\repos\expbox\firmware\src\
 [HEADER_PATH]
-Count=1
+Count=2
 Path0=C:\Users\Alija Bobija\source\repos\expbox\firmware\src\
+Path1=C:\Users\Alija Bobija\source\repos\expbox\firmware\src\include\
 [HEADERS]
 Count=3
-File0=src\main.h
-File1=src\display.h
-File2=src\defs.h
+File0=src\include\defs.h
+File1=src\include\display.h
+File2=src\include\main.h
 [PLDS]
 Count=0
 [Useses]
