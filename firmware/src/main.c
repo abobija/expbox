@@ -1,7 +1,5 @@
 #include "main.h"
 
-#define ONE_SEC_TICKS 2000000
-
 uint16_t tmr0_ticks_cnt = 0;
 bool one_sec_flag = false;
 
