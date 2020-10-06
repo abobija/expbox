@@ -33,10 +33,11 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-Count=3
+Count=4
 File0=src\main.c
 File1=src\display.c
 File2=src\include\display.h
+File3=src\include\main.h
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
