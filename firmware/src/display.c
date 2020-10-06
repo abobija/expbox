@@ -29,14 +29,19 @@ static sbit disp_mod_4 at PORTA.B3;
 static uint8_t disp_min = 13;
 static uint8_t disp_sec = 37;
 
-static uint8_t disp_mux_ticks = 0;
-static bool disp_mux_flag = HIGH;
+uint8_t disp_mux_ticks = 0;
+bool disp_mux_flag = HIGH;
 
-void disp_timer_overlow_handler() {
-    if(++disp_mux_ticks > DISP_ONE_MUX_TICKS) {
-        disp_mux_ticks = 0;
-        disp_mux_flag = HIGH;
-    }
+void disp_init() {
+    TRISA &= 0xF0;       // <0:3> are outputs
+    PORTA &= 0xF0;       // <0:3> off
+    TRISC  = 0x00;
+    PORTC  = 0x00;
+                         // TIMER0:
+    OPTION_REG.T0CS = 0; // TMR0 source: Fosc/4
+    OPTION_REG.PSA = 1;  // No prescaler for tmr0
+    TMR0 = 0;            // Reset tmr0
+    INTCON.TMR0IE = 1;   // Enable tmr0 interrupt
 }
 
 void disp_show() {

@@ -16,10 +16,7 @@ void interrupt() {
       TMR1IF_bit = LOW;
     }
     
-    if(TMR0IF_bit) {
-      disp_timer_overlow_handler();
-      TMR0IF_bit = LOW;
-    }
+    disp_interrupt_handler();
 }
 
 void main() {
@@ -29,18 +26,10 @@ void main() {
     ANSEL = 0x00;         // All pins
     ANSELH = 0x00;        // are digital I/O
 
-    TRISA = 0x00;
-    PORTA = 0x00;
     TRISB = 0b00000111;
     PORTB = 0x00;
-    TRISC = 0x00;
-    PORTC = 0x00;
 
-                          // TIMER0:
-    OPTION_REG.T0CS = 0;  // TMR0 source: Fosc/4
-    OPTION_REG.PSA = 1;   // No prescaler for tmr0
-    TMR0 = 0;             // Reset tmr0
-    INTCON.TMR0IE = 1;    // Enable tmr0 interrupt
+    disp_init();
     
                           // TIMER1:
     T1CON = 0b00000001;   // No prescaler; source: Fosc/4; enable tmr1

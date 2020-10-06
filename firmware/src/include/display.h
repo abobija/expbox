@@ -14,21 +14,20 @@
  */
 #define DISP_ONE_MUX_TICKS 15
 
-extern uint8_t disp_nums[];
-extern uint8_t disp_port;
-extern sbit disp_mod_1;
-extern sbit disp_mod_2;
-extern sbit disp_mod_3;
-extern sbit disp_mod_4;
-extern uint8_t disp_min;
-extern uint8_t disp_sec;
 extern uint8_t disp_mux_ticks;
 extern bool disp_mux_flag;
 
-/*
- * This function should be called in TIMER overflow interrupt
- */
-void disp_timer_overlow_handler();
+#define disp_interrupt_handler()\
+    if(TMR0IF_bit) {\
+        if(++disp_mux_ticks > DISP_ONE_MUX_TICKS) {\
+            disp_mux_ticks = 0;\
+            disp_mux_flag = HIGH;\
+        }\
+        \
+        TMR0IF_bit = LOW;\
+    }
+    
+void disp_init();
 
 /*
  * This function should be called in infinity loop inside of main function
