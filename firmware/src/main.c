@@ -17,12 +17,6 @@ void interrupt() {
 
       TMR0IF_bit = LOW;
     }
-    
-    if(RBIF_bit) {
-
-
-        RBIF_bit = LOW;
-    }
 }
 
 void main() {
@@ -36,17 +30,14 @@ void main() {
 
     OSCCON |= 0b01110000; // 8MHz INTOSC
     
-    TRISB = 0b00000111;   // Set corresponding pins of port B as input
-    PORTB = 0x00;
-    WPUB  = 0b00000111;   // Enable weak pull-ups on port B
-    IOCB  = 0b00000111;   // Enable corresponding int-on-change on port B
-    OPTION_REG.B7 = 0;    // Port B weak pull-ups global enable
+    INTCON = 0x00;        // Disable all interupts
 
-    INTCON = 0b10101000;  // Interrupts: Global, TMR0, RBIE (int-on-change)
     OPTION_REG.T0CS = 0;  // TMR0 source: Fosc/4
-    OPTION_REG.PSA = 1;   // No prescaler for TMR0
-
-    TMR0 = 0x00;
+    OPTION_REG.PSA = 1;   // No prescaler for tmr0
+    TMR0 = 0;             // Reset tmr0
+    INTCON.TMR0IE = 1;    // Enable tmr0 interrupt
+    
+    INTCON.GIE = 1;       // Enable global interrupts
     
     while(true) {
         if(one_sec_flag) {
