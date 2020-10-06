@@ -23,8 +23,8 @@ void main() {
 
     TRISA = 0x00;
     PORTA = 0x00;
-    TRISB = 0x00;
-    PORTB = 0x00;
+    TRISC = 0x00;
+    PORTC = 0x00;
 
     OSCCON |= 0b01110000; // 8MHz INTOSC
 

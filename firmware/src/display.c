@@ -19,7 +19,7 @@ uint8_t disp_nums[] = {
     0b01101111
 };
 
-uint8_t disp_port at PORTB;
+uint8_t disp_port at PORTC;
 
 sbit disp_mod_1 at PORTA.B0;
 sbit disp_mod_2 at PORTA.B1;
