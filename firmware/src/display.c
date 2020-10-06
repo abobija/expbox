@@ -6,7 +6,7 @@
  *  PORT: | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
  *  ---------------------------------------
  */
-uint8_t disp_nums[] = {
+static uint8_t disp_nums[] = {
     0b00111111,
     0b00000110,
     0b01011011,
@@ -19,20 +19,20 @@ uint8_t disp_nums[] = {
     0b01101111
 };
 
-uint8_t disp_port at PORTC;
+static uint8_t disp_port at PORTC;
 
-sbit disp_mod_1 at PORTA.B0;
-sbit disp_mod_2 at PORTA.B1;
-sbit disp_mod_3 at PORTA.B2;
-sbit disp_mod_4 at PORTA.B3;
+static sbit disp_mod_1 at PORTA.B0;
+static sbit disp_mod_2 at PORTA.B1;
+static sbit disp_mod_3 at PORTA.B2;
+static sbit disp_mod_4 at PORTA.B3;
 
-uint8_t disp_min = 13;
-uint8_t disp_sec = 37;
+static uint8_t disp_min = 13;
+static uint8_t disp_sec = 37;
 
-uint8_t disp_mux_ticks = 0;
-bool disp_mux_flag = HIGH;
+static uint8_t disp_mux_ticks = 0;
+static bool disp_mux_flag = HIGH;
 
-void disp_tmr0_ofw_handler() {
+void disp_timer_overlow_handler() {
     if(++disp_mux_ticks > DISP_ONE_MUX_TICKS) {
         disp_mux_ticks = 0;
         disp_mux_flag = HIGH;

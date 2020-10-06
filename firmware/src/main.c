@@ -13,7 +13,7 @@ void interrupt() {
           one_sec_flag = HIGH;
       }
 
-      disp_tmr0_ofw_handler();
+      disp_timer_overlow_handler();
 
       TMR0IF_bit = LOW;
     }
