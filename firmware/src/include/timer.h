@@ -12,6 +12,7 @@
 
 extern uint16_t tmr_ticks;
 extern bool tmr_one_sec_flag;
+extern void (*tmr_one_sec_callback)();
 
 #define tmr_interrupt_handler()\
     if(TMR1IF_bit) {\

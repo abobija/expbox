@@ -2,6 +2,7 @@
 
 uint16_t tmr_ticks = 0;
 bool tmr_one_sec_flag = LOW;
+void (*tmr_one_sec_callback)() = NULL;
 
 void tmr_init() {
                         // TIMER1:
@@ -14,6 +15,9 @@ void tmr_init() {
 void tmr_run() {
     if(tmr_one_sec_flag) {
         tmr_one_sec_flag = LOW;
-        PORTB.B7 = ~PORTB.B7;
+
+        if(tmr_one_sec_callback) {
+            tmr_one_sec_callback();
+        }
     }
 }

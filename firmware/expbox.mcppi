@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=src\main.c
+Value=src\include\defs.h
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -35,12 +35,13 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-Count=5
+Count=6
 File0=src\main.c
 File1=src\include\buttons.h
 File2=src\buttons.c
 File3=src\include\timer.h
 File4=src\timer.c
+File5=src\include\defs.h
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]

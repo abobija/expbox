@@ -9,6 +9,10 @@ void interrupt() {
     disp_interrupt_handler();
 }
 
+void one_sec_tick() {
+    PORTB.B7 = ~PORTB.B7;
+}
+
 void main() {
     OSCCON |= 0x70; // 8MHz INTOSC
     INTCON = 0x00;  // Disable all interupts
@@ -20,6 +24,8 @@ void main() {
     PORTB.B7 = 0;
 
     tmr_init();
+    tmr_one_sec_callback = &one_sec_tick;
+    
     buttons_init();
     disp_init();
     
