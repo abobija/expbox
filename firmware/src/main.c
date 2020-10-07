@@ -41,7 +41,7 @@ void main() {
     
     while(true) {
         tmr_run();
-        buttons_scan();
+        buttons_read();
         disp_show();
     }
 }

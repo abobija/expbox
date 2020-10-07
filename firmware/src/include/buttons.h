@@ -13,6 +13,6 @@ void buttons_init();
 /*
  * This function should be called in infinity loop inside of main function
  */
-void buttons_scan();
+void buttons_read();
 
 #endif

@@ -19,6 +19,6 @@ void buttons_init() {
     TMR2 = 0;            // Reset Tmr2
 }
 
-void buttons_scan() {
+void buttons_read() {
 
 }
