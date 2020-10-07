@@ -3,28 +3,6 @@
 #include "buttons.h"
 #include "display.h"
 
-void interrupt() {
-    tmr_interrupt_handler();
-    buttons_interrupt_handler();
-    disp_interrupt_handler();
-}
-
-void one_sec_tick() {
-   PORTB.B7 = ~PORTB.B7;
-}
-
-void button_up_handler() {
-
-}
-
-void button_down_handler() {
-
-}
-
-void button_start_stop_handler() {
-    PORTB.B6 = ~PORTB.B6;
-}
-
 void main() {
     // Set the internal oscillator frequency
 #if(__FOSC__ == 8000)
@@ -63,4 +41,26 @@ void main() {
         buttons_read();
         disp_show();
     }
+}
+
+void interrupt() {
+    tmr_interrupt_handler();
+    buttons_interrupt_handler();
+    disp_interrupt_handler();
+}
+
+void one_sec_tick() {
+   PORTB.B7 = ~PORTB.B7;
+}
+
+void button_up_handler() {
+
+}
+
+void button_down_handler() {
+
+}
+
+void button_start_stop_handler() {
+    PORTB.B6 = ~PORTB.B6;
 }

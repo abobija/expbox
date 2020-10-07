@@ -7,4 +7,10 @@
 
 #include "defs.h"
 
+void interrupt();
+void one_sec_tick();
+void button_up_handler();
+void button_down_handler();
+void button_start_stop_handler();
+
 #endif

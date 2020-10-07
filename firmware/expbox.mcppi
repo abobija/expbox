@@ -35,10 +35,9 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-Count=3
+Count=2
 File0=src\main.c
-File1=src\buttons.c
-File2=src\include\buttons.h
+File1=src\include\main.h
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
