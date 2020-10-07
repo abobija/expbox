@@ -29,7 +29,6 @@ static sbit disp_mod_4 at PORTA.B3;
 static uint8_t disp_min = 13;
 static uint8_t disp_sec = 37;
 
-uint8_t disp_mux_ticks = 0;
 bool disp_mux_flag = HIGH;
 
 void disp_init() {
@@ -39,7 +38,11 @@ void disp_init() {
     PORTC  = 0x00;
                          // TIMER0:
     OPTION_REG.T0CS = 0; // TMR0 source: Fosc/4
-    OPTION_REG.PSA = 1;  // No prescaler for tmr0
+    OPTION_REG.PSA = 0;  // Assign prescaler to tmr0
+    OPTION_REG.PS2 = 0;  // ~ Set
+    OPTION_REG.PS1 = 1;  // prescaler
+    OPTION_REG.PS0 = 1;  // to 1:16 ~
+
     TMR0 = 0;            // Reset tmr0
     INTCON.TMR0IE = 1;   // Enable tmr0 interrupt
 }
