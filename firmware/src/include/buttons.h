@@ -3,7 +3,10 @@
 
 #include "defs.h"
 
-#define buttons_interrupt_handler() {};
+#define buttons_interrupt_handler()\
+    if(TMR2IF_bit) {\
+        TMR2IF_bit = 0;\
+    }
 
 void buttons_init();
 
