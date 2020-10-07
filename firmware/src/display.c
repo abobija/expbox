@@ -39,9 +39,21 @@ void disp_init() {
                          // TIMER0:
     OPTION_REG.T0CS = 0; // TMR0 source: Fosc/4
     OPTION_REG.PSA = 0;  // Assign prescaler to tmr0
-    OPTION_REG.PS2 = 0;  // ~ Set
-    OPTION_REG.PS1 = 1;  // prescaler
-    OPTION_REG.PS0 = 1;  // to 1:16 ~
+    
+                         // Set prescaler
+#if(__FOSC__ == 8000)
+    OPTION_REG.PS2 = 0;  //
+    OPTION_REG.PS1 = 1;  //
+    OPTION_REG.PS0 = 1;  // 1:16
+#elif(__FOSC__ == 4000)
+    OPTION_REG.PS2 = 0;  //
+    OPTION_REG.PS1 = 1;  //
+    OPTION_REG.PS0 = 0;  // 1:8
+#elif(__FOSC__ == 2000)
+    OPTION_REG.PS2 = 0;  //
+    OPTION_REG.PS1 = 0;  //
+    OPTION_REG.PS0 = 1;  // 1:4
+#endif
 
     TMR0 = 0;            // Reset tmr0
     INTCON.TMR0IE = 1;   // Enable tmr0 interrupt

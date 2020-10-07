@@ -6,9 +6,15 @@
 #define TMR_TICKS_INCREMENTER 2048
 
 /*
- * 62500 = ((__FOSC__ * 1e3) / 4) / (65536 / TICKS_INCREMENT)
+ * TMR_ONE_SEC_TICKS = ((__FOSC__ * 1e3) / 4) / (65536 / TICKS_INCREMENT)
  */
-#define TMR_ONE_SEC_TICKS 62500
+#if(__FOSC__ == 8000)
+    #define TMR_ONE_SEC_TICKS 62500
+#elif(__FOSC__ == 4000)
+    #define TMR_ONE_SEC_TICKS 31250
+#elif(__FOSC__ == 2000)
+    #define TMR_ONE_SEC_TICKS 15625
+#endif
 
 extern uint16_t tmr_ticks;
 extern bool tmr_one_sec_flag;

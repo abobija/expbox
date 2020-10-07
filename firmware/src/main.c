@@ -14,7 +14,15 @@ void one_sec_tick() {
 }
 
 void main() {
-    OSCCON |= 0x70; // 8MHz INTOSC
+    // Set the internal oscillator frequency
+#if(__FOSC__ == 8000)
+    OSCCON |= 0x70; // 8 MHz
+#elif(__FOSC__ == 4000)
+    OSCCON |= 0x60; // 4 MHz
+#elif(__FOSC__ == 2000)
+    OSCCON |= 0x50; // 2 MHz
+#endif
+
     INTCON = 0x00;  // Disable all interupts
     
     ANSEL = 0x00;   // All pins
