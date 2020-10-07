@@ -24,20 +24,24 @@ Count=2
 1=System Libraries
 Count=2
 [FILES]
-Count=4
+Count=5
 File0=src\main.c
 File1=src\display.c
 File2=src\timer.c
 File3=src\buttons.c
+File4=src\xtime.c
 [BINARIES]
 Count=0
 [IMAGES]
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-Count=2
+Count=5
 File0=src\main.c
 File1=src\include\main.h
+File2=src\xtime.c
+File3=src\include\xtime.h
+File4=src\display.c
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -56,12 +60,13 @@ Count=2
 Path0=C:\Users\Alija Bobija\source\repos\expbox\firmware\src\
 Path1=C:\Users\Alija Bobija\source\repos\expbox\firmware\src\include\
 [HEADERS]
-Count=5
+Count=6
 File0=src\include\defs.h
 File1=src\include\display.h
 File2=src\include\main.h
 File3=src\include\timer.h
 File4=src\include\buttons.h
+File5=src\include\xtime.h
 [PLDS]
 Count=0
 [Useses]

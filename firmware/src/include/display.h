@@ -2,6 +2,7 @@
 #define DISPLAY_H
 
 #include "defs.h"
+#include "xtime.h"
 
 extern bool disp_mux_flag;
 
@@ -11,7 +12,7 @@ extern bool disp_mux_flag;
         TMR0IF_bit = LOW;\
     }
     
-void disp_init();
+void disp_init(xTime*);
 
 /*
  * This function should be called in infinity loop inside of main function

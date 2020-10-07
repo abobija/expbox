@@ -26,12 +26,13 @@ static sbit disp_mod_2 at PORTA.B1;
 static sbit disp_mod_3 at PORTA.B2;
 static sbit disp_mod_4 at PORTA.B3;
 
-static uint8_t disp_min = 13;
-static uint8_t disp_sec = 37;
+static xTime *time;
 
 bool disp_mux_flag = HIGH;
 
-void disp_init() {
+void disp_init(xTime *_time) {
+    time = _time;
+    
     TRISA &= 0xF0;       // <0:3> are outputs
     PORTA &= 0xF0;       // <0:3> off
     TRISC  = 0x00;
@@ -80,13 +81,13 @@ void disp_show() {
     }
 
     if(disp_mod_1) {
-        disp_port = disp_nums[disp_min / 10];
+        disp_port = disp_nums[time->min / 10];
     } else if(disp_mod_2) {
-        disp_port = disp_nums[disp_min % 10];
+        disp_port = disp_nums[time->min % 10];
     } else if(disp_mod_3) {
-        disp_port = disp_nums[disp_sec / 10];
+        disp_port = disp_nums[time->sec / 10];
     } else if(disp_mod_4) {
-        disp_port = disp_nums[disp_sec % 10];
+        disp_port = disp_nums[time->sec % 10];
     } else {
         disp_port = OFF;
     }

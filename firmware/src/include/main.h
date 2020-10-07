@@ -6,6 +6,12 @@
 #endif
 
 #include "defs.h"
+#include "xtime.h"
+#include "timer.h"
+#include "buttons.h"
+#include "display.h"
+
+extern xTime time;
 
 void interrupt();
 void one_sec_tick();

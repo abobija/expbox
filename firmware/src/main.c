@@ -1,7 +1,6 @@
 #include "main.h"
-#include "timer.h"
-#include "buttons.h"
-#include "display.h"
+
+xTime time = { 0, 0 };
 
 void main() {
     // Set the internal oscillator frequency
@@ -32,7 +31,7 @@ void main() {
     buttons_down_callback = &button_down_handler;
     buttons_start_stop_callback = &button_start_stop_handler;
     
-    disp_init();
+    disp_init(&time);
     
     INTCON.GIE = 1; // Enable global interrupts
     
@@ -54,11 +53,11 @@ void one_sec_tick() {
 }
 
 void button_up_handler() {
-
+    xtime_inc(&time);
 }
 
 void button_down_handler() {
-
+    xtime_dec(&time);
 }
 
 void button_start_stop_handler() {
