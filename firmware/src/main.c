@@ -10,7 +10,19 @@ void interrupt() {
 }
 
 void one_sec_tick() {
-    PORTB.B7 = ~PORTB.B7;
+   PORTB.B7 = ~PORTB.B7;
+}
+
+void button_up_handler() {
+
+}
+
+void button_down_handler() {
+
+}
+
+void button_start_stop_handler() {
+    PORTB.B6 = ~PORTB.B6;
 }
 
 void main() {
@@ -30,11 +42,18 @@ void main() {
 
     TRISB.B7 = 0;   // One second indication LED
     PORTB.B7 = 0;
+    
+    TRISB.B6 = 0;   // Button debug LED
+    PORTB.B6 = 0;
 
     tmr_init();
     tmr_one_sec_callback = &one_sec_tick;
     
     buttons_init();
+    buttons_up_callback = &button_up_handler;
+    buttons_down_callback = &button_down_handler;
+    buttons_start_stop_callback = &button_start_stop_handler;
+    
     disp_init();
     
     INTCON.GIE = 1; // Enable global interrupts
