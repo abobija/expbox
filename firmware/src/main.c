@@ -8,6 +8,8 @@ static sbit one_sec_led_tris at TRISB.B7;
 static sbit one_sec_led at PORTB.B7;
 static sbit exposure_light_tris at TRISB.B6;
 static sbit exposure_light at PORTB.B6;
+static sbit piezo_speaker_tris at TRISB.B5;
+static sbit piezo_speaker at PORTB.B5;
 
 void main() {
     // Set the internal oscillator frequency
@@ -29,6 +31,9 @@ void main() {
     
     exposure_light_tris = 0;
     exposure_light = OFF;
+
+    piezo_speaker_tris = 0;
+    piezo_speaker = OFF;
 
     tmr_init();
     tmr_one_sec_callback = &one_sec_tick;
@@ -78,9 +83,14 @@ void stop_countdown() {
 void one_sec_tick() {
     one_sec_led = ~one_sec_led;
    
+    if(piezo_speaker) {
+        piezo_speaker = OFF;
+    }
+   
     if(countdown_running) {
         if(xtime_is_zero(&time)) {
             stop_countdown();
+            piezo_speaker = ON;
         } else {
             xtime_dec(&time);
         }
