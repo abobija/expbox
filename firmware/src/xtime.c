@@ -23,3 +23,8 @@ void xtime_dec(xTime *time) {
 bool xtime_is_zero(xTime *time) {
     return time->min == 0 && time->sec == 0;
 }
+
+void xtime_copy(xTime *source, xTime *destination) {
+    destination->min = source->min;
+    destination->sec = source->sec;
+}

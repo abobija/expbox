@@ -1,6 +1,8 @@
 #include "main.h"
 
 xTime time = { 0, 0 };
+
+static xTime time_backup;
 static bool countdown_running = false;
 
 void main() {
@@ -54,6 +56,7 @@ void start_countdown() {
         return;
 
     buttons_disable_up_down();
+    xtime_copy(&time, &time_backup);
     countdown_running = true;
 }
 
@@ -61,6 +64,7 @@ void stop_countdown() {
     if(! countdown_running)
         return;
 
+    xtime_copy(&time_backup, &time);
     buttons_enable_up_down();
     countdown_running = false;
 }
