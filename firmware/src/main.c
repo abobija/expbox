@@ -1,9 +1,13 @@
 #include "main.h"
 
-xTime time = { 0, 0 };
-
+static xTime time = { 0, 0 };
 static xTime time_backup;
 static bool countdown_running = false;
+static sbit one_sec_led_tris at TRISB.B7;
+static sbit one_sec_led at PORTB.B7;
+static sbit exposure_light_tris at TRISB.B6;
+static sbit exposure_light at PORTB.B6;
+
 
 void main() {
     // Set the internal oscillator frequency
@@ -20,11 +24,11 @@ void main() {
     ANSEL = 0x00;   // All pins
     ANSELH = 0x00;  // are digital I/O
 
-    TRISB.B7 = 0;   // One second indication LED
-    PORTB.B7 = 0;
+    one_sec_led_tris = 0;
+    one_sec_led = OFF;
     
-    TRISB.B6 = 0;   // Button debug LED
-    PORTB.B6 = 0;
+    exposure_light_tris = 0;
+    exposure_light = OFF;
 
     tmr_init();
     tmr_one_sec_callback = &one_sec_tick;
@@ -57,6 +61,7 @@ void start_countdown() {
 
     buttons_disable_up_down();
     xtime_copy(&time, &time_backup);
+    exposure_light = ON;
     countdown_running = true;
 }
 
@@ -64,13 +69,14 @@ void stop_countdown() {
     if(! countdown_running)
         return;
 
+    exposure_light = OFF;
     xtime_copy(&time_backup, &time);
     buttons_enable_up_down();
     countdown_running = false;
 }
 
 void one_sec_tick() {
-    PORTB.B7 = ~PORTB.B7;
+    one_sec_led = ~one_sec_led;
    
     if(countdown_running) {
         if(xtime_is_zero(&time)) {

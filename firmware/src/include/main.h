@@ -11,8 +11,6 @@
 #include "buttons.h"
 #include "display.h"
 
-extern xTime time;
-
 void interrupt();
 void start_countdown();
 void stop_countdown();
