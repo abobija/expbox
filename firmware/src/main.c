@@ -3,11 +3,11 @@
 static xTime time = { 0, 0 };
 static xTime time_backup;
 static bool countdown_running = false;
+
 static sbit one_sec_led_tris at TRISB.B7;
 static sbit one_sec_led at PORTB.B7;
 static sbit exposure_light_tris at TRISB.B6;
 static sbit exposure_light at PORTB.B6;
-
 
 void main() {
     // Set the internal oscillator frequency
