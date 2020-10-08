@@ -19,12 +19,17 @@ static uint8_t disp_nums[] = {
     0b01101111
 };
 
-static uint8_t disp_port at PORTC;
+static uint8_t disp_port_tris at TRISA;
+static uint8_t disp_port at PORTA;
 
-static sbit disp_mod_1 at PORTA.B0;
-static sbit disp_mod_2 at PORTA.B1;
-static sbit disp_mod_3 at PORTA.B2;
-static sbit disp_mod_4 at PORTA.B3;
+static sbit disp_mod_1_tris at TRISC.B4;
+static sbit disp_mod_1 at PORTC.B4;
+static sbit disp_mod_2_tris at TRISC.B5;
+static sbit disp_mod_2 at PORTC.B5;
+static sbit disp_mod_3_tris at TRISC.B6;
+static sbit disp_mod_3 at PORTC.B6;
+static sbit disp_mod_4_tris at TRISC.B7;
+static sbit disp_mod_4 at PORTC.B7;
 
 static xTime *time;
 
@@ -33,10 +38,19 @@ bool disp_mux_flag = HIGH;
 void disp_init(xTime *_time) {
     time = _time;
     
-    TRISA &= 0xF0;       // <0:3> are outputs
-    PORTA &= 0xF0;       // <0:3> off
-    TRISC  = 0x00;
-    PORTC  = 0x00;
+    disp_port_tris = 0x00;
+    disp_port = 0x00;
+    
+    disp_mod_1_tris
+        = disp_mod_2_tris
+        = disp_mod_3_tris
+        = disp_mod_4_tris = 0;
+    
+    disp_mod_1
+        = disp_mod_2
+        = disp_mod_3
+        = disp_mod_4 = 0;
+
                          // TIMER0:
     OPTION_REG.T0CS = 0; // TMR0 source: Fosc/4
     OPTION_REG.PSA = 0;  // Assign prescaler to tmr0
