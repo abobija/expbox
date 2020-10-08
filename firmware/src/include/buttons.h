@@ -8,11 +8,14 @@
  * then debouncing time will be X * BUTTONS_ACCEPTABLE_CONFIDENCE_LVL [ms]
  */
 #define BUTTONS_ACCEPTABLE_CONFIDENCE_LVL 4
+#define BUTTONS_BURST_THRESHOLD 123
 
 typedef struct {
     uint8_t pin;
     uint8_t confidence_lvl;
     bool is_pressed;
+    bool is_burst_mode_enabled;
+    uint8_t burst_delay_counter;
     void (**callback)();
 } Button;
 

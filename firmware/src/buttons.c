@@ -10,9 +10,9 @@ void (*buttons_down_callback)() = NULL;
 void (*buttons_start_stop_callback)() = NULL;
 
 static Button buttons[] = {
-    { 0, 0, NO, &buttons_up_callback },
-    { 1, 0, NO, &buttons_down_callback },
-    { 2, 0, NO, &buttons_start_stop_callback }
+    { 0, 0, false, true, 0, &buttons_up_callback },
+    { 1, 0, false, true, 0, &buttons_down_callback },
+    { 2, 0, false, false, 0, &buttons_start_stop_callback }
 };
 
 static const uint8_t buttons_len = 3;
@@ -55,9 +55,18 @@ void buttons_read() {
                     if(*(buttons[i].callback)) {
                         (*(buttons[i].callback))();
                     }
+                } else if(buttons[i].is_pressed && buttons[i].is_burst_mode_enabled) {
+                    if(buttons[i].burst_delay_counter < BUTTONS_BURST_THRESHOLD) {
+                        buttons[i].burst_delay_counter++;
+                    } else {
+                        if(*(buttons[i].callback)) {
+                            (*(buttons[i].callback))();
+                        }
+                    }
                 }
             } else {
                 buttons[i].confidence_lvl = 0;
+                buttons[i].burst_delay_counter = 0;
                 buttons[i].is_pressed = false;
             }
         }

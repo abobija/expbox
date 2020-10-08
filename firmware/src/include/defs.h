@@ -9,8 +9,6 @@
 #define LOW 0
 #define ON 1
 #define OFF 0
-#define YES 1
-#define NO 0
 
 typedef unsigned char uint8_t;
 typedef unsigned int uint16_t;
