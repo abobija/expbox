@@ -1,6 +1,5 @@
 #include "buttons.h"
 
-static uint8_t buttons_tris at TRISB;
 static uint8_t buttons_port at PORTB;
 
 bool buttons_confidence_check_flag = LOW;
@@ -18,8 +17,9 @@ static Button buttons[] = {
 static const uint8_t buttons_len = 3;
 
 void buttons_init() {
-    // Set corresponding pins as input
-    buttons_tris |= 0b00000111;
+    TRISB |= 0b00000111; // Set pins as input
+    WPUB = 0b00000111;   // Enable weak pull-ups on pins
+    OPTION_REG.B7 = 0;   // Enable weak pull-ups globaly
     
                          // TIMER2:
                          // Set prescaler and enable Tmr2
