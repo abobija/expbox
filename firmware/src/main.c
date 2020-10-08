@@ -1,6 +1,7 @@
 #include "main.h"
 
 xTime time = { 0, 0 };
+static bool countdown_running = false;
 
 void main() {
     // Set the internal oscillator frequency
@@ -48,8 +49,32 @@ void interrupt() {
     disp_interrupt_handler();
 }
 
+void start_countdown() {
+    if(countdown_running || xtime_is_zero(&time))
+        return;
+
+    buttons_disable_up_down();
+    countdown_running = true;
+}
+
+void stop_countdown() {
+    if(! countdown_running)
+        return;
+
+    buttons_enable_up_down();
+    countdown_running = false;
+}
+
 void one_sec_tick() {
-   PORTB.B7 = ~PORTB.B7;
+    PORTB.B7 = ~PORTB.B7;
+   
+    if(countdown_running) {
+        if(xtime_is_zero(&time)) {
+            stop_countdown();
+        } else {
+            xtime_dec(&time);
+        }
+    }
 }
 
 void button_up_handler() {
@@ -61,5 +86,9 @@ void button_down_handler() {
 }
 
 void button_start_stop_handler() {
-    PORTB.B6 = ~PORTB.B6;
+    if(countdown_running) {
+        stop_countdown();
+    } else {
+        start_countdown();
+    }
 }

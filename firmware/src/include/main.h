@@ -14,6 +14,8 @@
 extern xTime time;
 
 void interrupt();
+void start_countdown();
+void stop_countdown();
 void one_sec_tick();
 void button_up_handler();
 void button_down_handler();

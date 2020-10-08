@@ -10,9 +10,9 @@ void (*buttons_down_callback)() = NULL;
 void (*buttons_start_stop_callback)() = NULL;
 
 static Button buttons[] = {
-    { 0, 0, false, true, 0, &buttons_up_callback },
-    { 1, 0, false, true, 0, &buttons_down_callback },
-    { 2, 0, false, false, 0, &buttons_start_stop_callback }
+    { true, 0, 0, false, true, 0, &buttons_up_callback },
+    { true, 1, 0, false, true, 0, &buttons_down_callback },
+    { true, 2, 0, false, false, 0, &buttons_start_stop_callback }
 };
 
 static const uint8_t buttons_len = 3;
@@ -37,6 +37,14 @@ void buttons_init() {
     TMR2 = 0;            // Reset Tmr2
 }
 
+void buttons_disable_up_down() {
+    buttons[0].enabled = buttons[1].enabled = false;
+}
+
+void buttons_enable_up_down() {
+    buttons[0].enabled = buttons[1].enabled = true;
+}
+
 void buttons_read() {
     uint8_t i;
     bool pin_is_low;
@@ -45,6 +53,9 @@ void buttons_read() {
         buttons_confidence_check_flag = LOW;
         
         for(i = 0; i < buttons_len; i++) {
+            if(! buttons[i].enabled)
+                continue;
+
             pin_is_low = ! ((buttons_port >> buttons[i].pin) & 0x01);
             
             if(pin_is_low) {

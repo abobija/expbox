@@ -11,6 +11,7 @@
 #define BUTTONS_BURST_THRESHOLD 123
 
 typedef struct {
+    bool enabled;
     uint8_t pin;
     uint8_t confidence_lvl;
     bool is_pressed;
@@ -32,6 +33,9 @@ extern bool buttons_confidence_check_flag;
     }
 
 void buttons_init();
+
+void buttons_disable_up_down();
+void buttons_enable_up_down();
 
 /*
  * This function should be called in infinity loop inside of main function
