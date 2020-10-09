@@ -15,6 +15,9 @@
 #include "buttons.h"
 #include "display.h"
 
+#define EEPROM_ADDR_MINUTES 0x00
+#define EEPROM_ADDR_SECONDS 0x01
+
 void interrupt();
 void start_countdown();
 void stop_countdown();
@@ -22,5 +25,7 @@ void one_sec_tick();
 void button_up_handler();
 void button_down_handler();
 void button_start_stop_handler();
+void save_time_to_eeprom();
+void read_time_from_eeprom();
 
 #endif

@@ -66,7 +66,8 @@ File5=src\include\xtime.h
 [PLDS]
 Count=0
 [Useses]
-Count=0
+Count=1
+File0=EEPROM
 [EXPANDED NODES]
 Node1=Sources
 Node2=Header Files

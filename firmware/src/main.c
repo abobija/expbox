@@ -35,6 +35,8 @@ void main() {
     piezo_speaker_tris = 0;
     piezo_speaker = OFF;
 
+    read_time_from_eeprom();
+
     tmr_init();
     tmr_one_sec_callback = &one_sec_tick;
     
@@ -65,6 +67,7 @@ void start_countdown() {
         return;
 
     buttons_disable_up_down();
+    save_time_to_eeprom();
     xtime_copy(&time, &time_backup);
     exposure_light = ON;
     countdown_running = true;
@@ -111,4 +114,20 @@ void button_start_stop_handler() {
     } else {
         start_countdown();
     }
+}
+
+void save_time_to_eeprom() {
+    EEPROM_Write(EEPROM_ADDR_MINUTES, time.min);
+    EEPROM_Write(EEPROM_ADDR_SECONDS, time.sec);
+}
+
+void read_time_from_eeprom() {
+    time.min = EEPROM_Read(EEPROM_ADDR_MINUTES);
+    time.sec = EEPROM_Read(EEPROM_ADDR_SECONDS);
+    
+    if(time.min >= 60)
+        time.min = 0;
+        
+    if(time.sec >= 60)
+        time.sec = 0;
 }
