@@ -75,34 +75,28 @@ void disp_init(xTime *_time) {
 }
 
 void disp_show() {
-    if(disp_mux_flag) {
-        disp_mux_flag = LOW;
-        disp_port = OFF;
-        
-        if(disp_mod_1) {
-            disp_mod_1 = OFF;
-            disp_mod_2 = ON;
-        } else if(disp_mod_2) {
-            disp_mod_2 = OFF;
-            disp_mod_3 = ON;
-        } else if(disp_mod_3) {
-            disp_mod_3 = OFF;
-            disp_mod_4 = ON;
-        } else {
-            disp_mod_4 = OFF;
-            disp_mod_1 = ON;
-        }
-    }
+    if(! disp_mux_flag)
+        return;
 
+    disp_mux_flag = LOW;
+    disp_port = OFF;
+    
     if(disp_mod_1) {
-        disp_port = disp_nums[time->min / 10];
-    } else if(disp_mod_2) {
+        disp_mod_1 = OFF;
+        disp_mod_2 = ON;
         disp_port = disp_nums[time->min % 10];
-    } else if(disp_mod_3) {
+    } else if(disp_mod_2) {
+        disp_mod_2 = OFF;
+        disp_mod_3 = ON;
         disp_port = disp_nums[time->sec / 10];
-    } else if(disp_mod_4) {
+    } else if(disp_mod_3) {
+        disp_mod_3 = OFF;
+        disp_mod_4 = ON;
         disp_port = disp_nums[time->sec % 10];
     } else {
-        disp_port = OFF;
+        disp_mod_4 = OFF;
+        disp_mod_1 = ON;
+        disp_port = disp_nums[time->min / 10];
     }
+
 }
