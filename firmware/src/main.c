@@ -2,6 +2,8 @@
 
 static xTime time = { 0, 0 };
 static xTime time_backup;
+static xTime time_in_eeprom;
+
 static bool countdown_running = false;
 
 static sbit one_sec_led_tris at TRISB.B7;
@@ -117,8 +119,14 @@ void button_start_stop_handler() {
 }
 
 void save_time_to_eeprom() {
+    if(xtime_is_same_as(&time, &time_in_eeprom)) {
+        return;
+    }
+
     EEPROM_Write(EEPROM_ADDR_MINUTES, time.min);
     EEPROM_Write(EEPROM_ADDR_SECONDS, time.sec);
+    
+    xtime_copy(&time, &time_in_eeprom);
 }
 
 void read_time_from_eeprom() {
@@ -130,4 +138,6 @@ void read_time_from_eeprom() {
         
     if(time.sec >= 60)
         time.sec = 0;
+
+    xtime_copy(&time, &time_in_eeprom);
 }

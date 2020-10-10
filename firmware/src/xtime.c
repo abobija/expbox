@@ -28,3 +28,7 @@ void xtime_copy(xTime *source, xTime *destination) {
     destination->min = source->min;
     destination->sec = source->sec;
 }
+
+bool xtime_is_same_as(xTime *t1, xTime *t2) {
+    return t1->min == t2->min && t1->sec == t2->sec;
+}

@@ -12,5 +12,6 @@ void xtime_inc(xTime*);
 void xtime_dec(xTime*);
 bool xtime_is_zero(xTime*);
 void xtime_copy(xTime*, xTime*);
+bool xtime_is_same_as(xTime*, xTime*);
 
 #endif
