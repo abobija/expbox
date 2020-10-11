@@ -8,6 +8,6 @@ After the countdown comes to zero, finish of exposure process will be signalized
 
 ## Microcontroller
 
-Microcontroller used in this project is [**PIC16F886**](https://www.microchip.com/wwwproducts/en/PIC16F886) produced by [Microchip](https://www.microchip.com) company. This MCU has three timers and each timer is assigned to a separated task. **Timer0** is responsible for multiplexing four seven-segment led modules. Task assigned to **Timer1** is precise time measuring and rising the flag exacly every second. And last, but not least, **Timer2** is in charge of buttons debouncing mechanism.
+Microcontroller used in this project is [**PIC16F886**](https://www.microchip.com/wwwproducts/en/PIC16F886) produced by [Microchip](https://www.microchip.com) company. This MCU has three timers and each timer is assigned to a separated task. **Timer0** is responsible for multiplexing four seven-segment led modules. **Timer1** is shared between tasks for precise time measuring and buttons debouncing. And last, but not least, **Timer2** is in charge of drive piezo speaker with **P**ulse **W**ide **M**odulated signal.
 
 The controller uses an **internal oscillator** and it's set to maximum frequency of **8 MHz**.
