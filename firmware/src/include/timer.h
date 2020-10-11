@@ -20,16 +20,13 @@ extern uint16_t tmr_ticks;
 extern bool tmr_one_sec_flag;
 extern void (*tmr_one_sec_callback)();
 
-#define tmr_interrupt_handler()\
-    if(TMR1IF_bit) {\
+#define tmr_timer_interrupt_handler() {\
       tmr_ticks += TMR_TICKS_INCREMENTER;\
       \
       if(tmr_ticks > TMR_ONE_SEC_TICKS) {\
           tmr_ticks -= TMR_ONE_SEC_TICKS;\
           tmr_one_sec_flag = HIGH;\
       }\
-      \
-      TMR1IF_bit = LOW;\
     }
 
 void tmr_init();

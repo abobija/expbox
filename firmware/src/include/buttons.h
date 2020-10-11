@@ -3,6 +3,8 @@
 
 #include "defs.h"
 
+#define BUTTONS_TIMER_VALUE TMR1H
+
 /*
  * If buttons timer overflow interrupt occurs every X[ms],
  * then debouncing time will be X * BUTTONS_ACCEPTABLE_CONFIDENCE_LVL [ms]
@@ -24,12 +26,10 @@ extern void (*buttons_up_callback)();
 extern void (*buttons_down_callback)();
 extern void (*buttons_start_stop_callback)();
 
-extern bool buttons_confidence_check_flag;
+extern bool buttons_timer_overflow_flag;
 
-#define buttons_interrupt_handler()\
-    if(TMR2IF_bit) {\
-        buttons_confidence_check_flag = HIGH;\
-        TMR2IF_bit = 0;\
+#define buttons_interrupt_handler() {\
+        buttons_timer_overflow_flag = true;\
     }
 
 void buttons_init();

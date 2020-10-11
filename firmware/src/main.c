@@ -59,8 +59,12 @@ void main() {
 }
 
 void interrupt() {
-    tmr_interrupt_handler();
-    buttons_interrupt_handler();
+    if(TMR1IF_bit) {
+        tmr_timer_interrupt_handler();
+        buttons_interrupt_handler();
+        TMR1IF_bit = LOW;
+    }
+
     disp_interrupt_handler();
 }
 
