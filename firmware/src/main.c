@@ -10,8 +10,6 @@ static sbit one_sec_led_tris at TRISB.B7;
 static sbit one_sec_led at PORTB.B7;
 static sbit exposure_light_tris at TRISB.B6;
 static sbit exposure_light at PORTB.B6;
-static sbit piezo_speaker_tris at TRISB.B5;
-static sbit piezo_speaker at PORTB.B5;
 
 void main() {
     // Set the internal oscillator frequency
@@ -34,9 +32,6 @@ void main() {
     exposure_light_tris = 0;
     exposure_light = OFF;
 
-    piezo_speaker_tris = 0;
-    piezo_speaker = OFF;
-
     read_time_from_eeprom();
 
     tmr_init();
@@ -48,6 +43,8 @@ void main() {
     buttons_start_stop_callback = &button_start_stop_handler;
     
     disp_init(&time);
+    
+    piezo_init();
     
     INTCON.GIE = 1; // Enable global interrupts
     
@@ -92,14 +89,14 @@ void stop_countdown() {
 void one_sec_tick() {
     one_sec_led = ~one_sec_led;
    
-    if(piezo_speaker) {
-        piezo_speaker = OFF;
+    if(piezo_is_on) {
+        piezo_off();
     }
    
     if(countdown_running) {
         if(xtime_is_zero(&time)) {
             stop_countdown();
-            piezo_speaker = ON;
+            piezo_on();
         } else {
             xtime_dec(&time);
         }

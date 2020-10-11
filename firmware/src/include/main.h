@@ -14,6 +14,7 @@
 #include "timer.h"
 #include "buttons.h"
 #include "display.h"
+#include "piezo.h"
 
 #define EEPROM_ADDR_MINUTES 0x00
 #define EEPROM_ADDR_SECONDS 0x01
