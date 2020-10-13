@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -16441,61 +16441,55 @@ high speed (Philips)</description>
 &lt;/ul&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="KSS1201" urn="urn:adsk.eagle:footprint:5231/1" library_version="2">
-<description>&lt;b&gt;SPEAKER&lt;/b&gt;</description>
-<wire x1="2.794" y1="2.54" x2="3.81" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="3.302" y1="3.048" x2="3.302" y2="2.032" width="0.1524" layer="21"/>
-<circle x="0" y="0" radius="1.27" width="0.1524" layer="21"/>
+<package name="F/TMB" urn="urn:adsk.eagle:footprint:5217/1" library_version="2">
+<description>&lt;b&gt;BUZZER&lt;/b&gt;</description>
+<wire x1="3.429" y1="2.54" x2="4.191" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="2.159" x2="3.81" y2="2.921" width="0.1524" layer="21"/>
 <circle x="0" y="0" radius="6.096" width="0.1524" layer="21"/>
-<circle x="3.302" y="2.54" radius="0.762" width="0.1524" layer="21"/>
-<pad name="+" x="3.2512" y="0" drill="0.9144" diameter="2.159" shape="octagon"/>
-<pad name="-" x="-3.2512" y="0" drill="0.9144" diameter="2.159" shape="octagon"/>
-<text x="3.937" y="5.08" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-3.556" y="-3.81" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<circle x="0" y="0" radius="1.27" width="0.1524" layer="21"/>
+<circle x="3.81" y="2.54" radius="0.762" width="0.1524" layer="21"/>
+<pad name="-" x="-3.81" y="0" drill="1.016" diameter="2.159" shape="octagon"/>
+<pad name="+" x="3.81" y="0" drill="1.016" diameter="2.159" shape="octagon"/>
+<text x="-3.81" y="-3.81" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<text x="3.302" y="5.715" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 </package>
 </packages>
 <packages3d>
-<package3d name="KSS1201" urn="urn:adsk.eagle:package:5268/1" type="box" library_version="2">
-<description>SPEAKER</description>
+<package3d name="F/TMB" urn="urn:adsk.eagle:package:5260/1" type="box" library_version="2">
+<description>BUZZER</description>
 <packageinstances>
-<packageinstance name="KSS1201"/>
+<packageinstance name="F/TMB"/>
 </packageinstances>
 </package3d>
 </packages3d>
 <symbols>
-<symbol name="SP" urn="urn:adsk.eagle:symbol:5218/1" library_version="2">
-<wire x1="-1.905" y1="-0.635" x2="1.905" y2="-0.635" width="0.254" layer="94"/>
-<wire x1="1.905" y1="-0.635" x2="1.905" y2="0" width="0.254" layer="94"/>
-<wire x1="1.905" y1="2.54" x2="-1.905" y2="2.54" width="0.254" layer="94"/>
-<wire x1="-1.905" y1="-0.635" x2="-1.905" y2="0" width="0.254" layer="94"/>
-<wire x1="1.905" y1="2.54" x2="5.08" y2="5.08" width="0.254" layer="94"/>
-<wire x1="5.08" y1="5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-1.905" y1="2.54" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
-<wire x1="2.54" y1="0" x2="1.905" y2="0" width="0.1524" layer="94"/>
-<wire x1="1.905" y1="0" x2="1.905" y2="2.54" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="0" x2="-1.905" y2="0" width="0.1524" layer="94"/>
-<wire x1="-1.905" y1="0" x2="-1.905" y2="2.54" width="0.254" layer="94"/>
-<text x="-3.81" y="6.35" size="1.778" layer="95">&gt;NAME</text>
-<text x="-3.81" y="-3.175" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="2" x="5.08" y="0" visible="pad" length="short" direction="pas" rot="R180"/>
-<pin name="1" x="-5.08" y="0" visible="pad" length="short" direction="pas"/>
+<symbol name="B" urn="urn:adsk.eagle:symbol:5216/1" library_version="2">
+<wire x1="-2.54" y1="5.08" x2="5.08" y2="5.08" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="5.08" x2="1.27" y2="5.08" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="5.08" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-2.54" x2="2.54" y2="1.397" width="0.1524" layer="94"/>
+<wire x1="0" y1="-2.54" x2="0" y2="1.397" width="0.1524" layer="94"/>
+<text x="-2.54" y="6.35" size="1.778" layer="95">&gt;NAME</text>
+<text x="5.08" y="0" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="-" x="5.08" y="-2.54" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="+" x="-2.54" y="-2.54" visible="pad" length="short" direction="pas"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="KSS1201" urn="urn:adsk.eagle:component:5303/2" prefix="SP" library_version="2">
-<description>&lt;b&gt;SPEAKER&lt;/b&gt;&lt;p&gt;
-Source: Schukat</description>
+<deviceset name="F/TMB" urn="urn:adsk.eagle:component:5296/2" prefix="SG" library_version="2">
+<description>&lt;b&gt;BUZZER&lt;/b&gt;&lt;p&gt; Source: Buerklin</description>
 <gates>
-<gate name="1" symbol="SP" x="0" y="0"/>
+<gate name="1" symbol="B" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="KSS1201">
+<device name="" package="F/TMB">
 <connects>
-<connect gate="1" pin="1" pad="+"/>
-<connect gate="1" pin="2" pad="-"/>
+<connect gate="1" pin="+" pad="+"/>
+<connect gate="1" pin="-" pad="-"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:5268/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:5260/1"/>
 </package3dinstances>
 <technologies>
 <technology name="">
@@ -16751,7 +16745,6 @@ Source: Schukat</description>
 <part name="LIGHT" library="con-wago-508" library_urn="urn:adsk.eagle:library:196" deviceset="W237-02P" device="" package3d_urn="urn:adsk.eagle:package:10734/1"/>
 <part name="LED3" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:15797/1" value="red"/>
 <part name="R20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="220"/>
-<part name="SP1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="KSS1201" device="" package3d_urn="urn:adsk.eagle:package:5268/1"/>
 <part name="Q6" library="transistor-npn" library_urn="urn:adsk.eagle:library:398" deviceset="BC850*" device="SMD" package3d_urn="urn:adsk.eagle:package:28748/2" value="2N3904"/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R23" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="1k"/>
@@ -16762,6 +16755,7 @@ Source: Schukat</description>
 <part name="U$2" library="abobija" deviceset="KCDA39-105" device=""/>
 <part name="U$3" library="abobija" deviceset="KCSA39-105" device=""/>
 <part name="U$4" library="abobija" deviceset="KCSA39-105" device=""/>
+<part name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="F/TMB" device="" package3d_urn="urn:adsk.eagle:package:5260/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -16990,10 +16984,6 @@ Source: Schukat</description>
 <attribute name="NAME" x="272.8214" y="212.09" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="277.622" y="212.09" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="SP1" gate="1" x="434.34" y="236.22" smashed="yes" rot="R270">
-<attribute name="NAME" x="440.69" y="240.03" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="431.165" y="240.03" size="1.778" layer="96" rot="R270"/>
-</instance>
 <instance part="Q6" gate="G$1" x="431.8" y="213.36" smashed="yes">
 <attribute name="NAME" x="436.88" y="215.9" size="1.778" layer="95"/>
 <attribute name="VALUE" x="436.88" y="213.36" size="1.778" layer="96"/>
@@ -17031,6 +17021,10 @@ Source: Schukat</description>
 <instance part="U$4" gate="G$1" x="419.1" y="76.2" smashed="yes">
 <attribute name="NAME" x="408.94" y="93.98" size="1.27" layer="95"/>
 <attribute name="VALUE" x="408.94" y="63.5" size="1.27" layer="96"/>
+</instance>
+<instance part="SG1" gate="1" x="436.88" y="238.76" smashed="yes" rot="R270">
+<attribute name="NAME" x="443.23" y="241.3" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="436.88" y="233.68" size="1.778" layer="96" rot="R270"/>
 </instance>
 </instances>
 <busses>
@@ -17191,7 +17185,6 @@ Source: Schukat</description>
 <junction x="302.26" y="246.38"/>
 </segment>
 <segment>
-<pinref part="SP1" gate="1" pin="1"/>
 <pinref part="P+9" gate="VCC" pin="VCC"/>
 <wire x1="434.34" y1="241.3" x2="434.34" y2="251.46" width="0.1524" layer="91"/>
 <pinref part="R25" gate="G$1" pin="2"/>
@@ -17199,6 +17192,7 @@ Source: Schukat</description>
 <wire x1="421.64" y1="248.92" x2="421.64" y2="251.46" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="251.46" x2="434.34" y2="251.46" width="0.1524" layer="91"/>
 <junction x="434.34" y="251.46"/>
+<pinref part="SG1" gate="1" pin="+"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -17708,13 +17702,13 @@ Source: Schukat</description>
 <net name="N$21" class="0">
 <segment>
 <pinref part="Q6" gate="G$1" pin="C"/>
-<pinref part="SP1" gate="1" pin="2"/>
 <wire x1="434.34" y1="218.44" x2="434.34" y2="220.98" width="0.1524" layer="91"/>
 <pinref part="D2" gate="G$1" pin="A"/>
-<wire x1="434.34" y1="220.98" x2="434.34" y2="231.14" width="0.1524" layer="91"/>
+<wire x1="434.34" y1="220.98" x2="434.34" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="223.52" x2="421.64" y2="220.98" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="220.98" x2="434.34" y2="220.98" width="0.1524" layer="91"/>
 <junction x="434.34" y="220.98"/>
+<pinref part="SG1" gate="1" pin="-"/>
 </segment>
 </net>
 <net name="N$24" class="0">
