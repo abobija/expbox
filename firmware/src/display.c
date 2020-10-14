@@ -41,7 +41,7 @@ void disp_init(xTime *_time) {
     time = _time;
     
     disp_port_tris = 0x00;
-    disp_port = 0x00;
+    disp_port = 0xFF;
     
     disp_mod_1_tris
         = disp_mod_2_tris
@@ -81,7 +81,7 @@ void disp_show() {
         return;
 
     disp_mux_flag = LOW;
-    disp_port = OFF;
+    disp_port = 0xFF;
     
     if(disp_mod_1) {
         disp_mod_1 = OFF;
@@ -100,5 +100,4 @@ void disp_show() {
         disp_mod_1 = ON;
         disp_port = disp_nums[time->min / 10];
     }
-
 }
