@@ -16,9 +16,9 @@ static uint8_t disp_nums[] = {
     0b10011001,
     0b11010000,
     0b11000000,
-    0b10000111,
     0b10011110,
-    0b10000000
+    0b10000000,
+    0b10010000
 };
 
 static uint8_t disp_port_tris at TRISA;
